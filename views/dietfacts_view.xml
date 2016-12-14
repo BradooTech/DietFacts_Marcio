@@ -9,6 +9,7 @@
                     <field name="calories"/>
                     <field name="serving_size"/>
                     <field name="last_updated"/>
+                    
                 </field>
             </field>
         </record>
@@ -24,64 +25,29 @@
             </field>
         </record>
         
-        <record id="product_template_action_dietfacts" model="ir.actions.act_window">
-            <field name="name">Products</field>
-            <field name="type">ir.actions.act_window</field>
-            <field name="res_model">product.product</field>
+        <record id="action_views_dietfacts_sessions_new" model="ir.actions.act_window">
+            <field name="name">New Sessions</field>
+            <field name="res_model">product.template</field>
             <field name="view_type">form</field>
-            <field name="view_mode">kanban,tree,form</field>
-            <field eval="{'search_default_filter_to_availabe_pos': 1}" name="context"/>
-            <field eval="[]" name="domain"/>
-            <field eval="False" name="search_view_id"/>
-            <!-- Force empty -->
-            <field eval="False" name="view_id"/>
-            <!-- Force empty -->
+            <field name="view_mode">tree,form,pivot</field>
+            <field name="context">{"default_categ_id":7}</field>
+            <field name="domain">[('categ_id.name','=','Diet Items')]</field>
             <field name="help" type="html">
                 <p class="oe_view_nocontent_create">
-                Click to add a new product.
-            </p>
+                    Click to create New Sessionns
+                </p>
                 <p>
-                You must define a product for everything you sell through
-                the point of sale interface.
-            </p>
-                <p>
-                Do not forget to set the price and the point of sale category
-                in which it should appear. If a product has no point of sale
-                category, you can not sell it through the point of sale
-                interface.
-            </p>
+                    Here you can enter your course session
+                    details with hosting detilas
+                </p>
             </field>
         </record>
         
-        <menuitem action="product.product_template_action_dietfacts"
-            id="menu_product_template_action_dietfacts"
-            parent="base.menu_sales" sequence="14"/>
-            
-            
-                   <menuitem action="action_orders"
-            id="menu_sale_order" parent="sales_team.menu_sales"
-            sequence="12" groups="sales_team.group_sale_salesman,sales_team.group_sale_manager"/>
-
-        <record id="action_orders_to_invoice" model="ir.actions.act_window">
-            <field name="name">Sales to Invoice</field>
-            <field name="type">ir.actions.act_window</field>
-            <field name="res_model">sale.order</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form,calendar,graph,pivot</field>
-            <field name="context">{}</field>
-            <field name="domain">[('invoice_status','=','to invoice')]</field>
-            <field name="search_view_id" ref="view_sales_order_filter"/>
-            <field name="help" type="html">
-              <p>
-                You will find here all orders that are ready to be invoiced.
-              </p><p>
-                You can select all orders and invoice them in batch, or check
-                every order and invoice them one by one.
-              </p>
-            </field>
-        </record>
-            
-            
+        <menuitem id="menu_dietfacts_root" name="DietFacts"/>
+        <menuitem id="menu_dietfacts_root_sessions"
+            name="Diet Facts" parent="menu_dietfacts_root"/>
+        <menuitem action="action_views_dietfacts_sessions_new"
+            id="menu_action_views_dietfacts_sessions_new" parent="menu_dietfacts_root_sessions"/>
             
     </data>
 </odoo>

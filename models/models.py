@@ -9,6 +9,7 @@ class Dietfacts_product_template(models.Model):
 	calories = fields.Integer('Calories')
 	serving_size = fields.Float('Serving Size')
 	last_updated = fields.Date('Last Updated')
+#	dietitem = fields.Boolean("Diet Item")
 #     _name = 'dietfacts.dietfacts'
 
 #     name = fields.Char()
