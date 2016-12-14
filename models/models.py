@@ -6,7 +6,9 @@ class Dietfacts_product_template(models.Model):
 	_name = 'product.template'
 	_inherit = 'product.template'
 	
-	calories = fields.Integer("Calories")
+	calories = fields.Integer('Calories')
+	serving_size = fields.Float('Serving Size')
+	last_updated = fields.Date('Last Updated')
 #     _name = 'dietfacts.dietfacts'
 
 #     name = fields.Char()
