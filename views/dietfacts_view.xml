@@ -21,6 +21,7 @@
                     <field name="calories"/>
                     <field name="serving_size"/>
                     <field name="last_updated"/>
+                    <field name="nutrition_score"/>
                 </field>
                 
                 
@@ -59,7 +60,7 @@
         </record>
         <!-- Action Meal Items -->
         <record id="action_views_meal_items_sessions_new" model="ir.actions.act_window">
-            <field name="name">New Sessions</field>
+            <field name="name">Meals</field>
             <field name="res_model">res.users.meal</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form,pivot</field>
@@ -96,6 +97,8 @@
                         <field name="user_id"/>
                         <field name="totalcalories"/>
                         <field name="notes"/>
+                        <field name="notes"/>
+                        <field name="largemeal"/>
                     </group>
                     
                     <notebook>
@@ -132,9 +135,9 @@
         
         <!-- Menu Diet Facts -->
         <menuitem id="menu_dietfacts_root" name="DietFacts"/>
-        <menuitem id="menu_dietfacts_root_sessions" name="Diet Items" parent="menu_dietfacts_root"/>
+        
         <menuitem action="action_views_dietfacts_sessions_new"
-            id="menu_action_views_dietfacts_sessions_new" parent="menu_dietfacts_root_sessions"/>
+            id="menu_dietfacts_root_sessions" name="Diet Items" parent="menu_dietfacts_root"/>
         <!-- Menu Meal Items -->
         <menuitem action="action_views_meal_items_sessions_new"
             id="menu_meal_items_root_sessions" name="Meals" parent="menu_dietfacts_root"/>

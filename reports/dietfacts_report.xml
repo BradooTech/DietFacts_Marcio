@@ -1,0 +1,45 @@
+<odoo>
+    <data>
+        <report file="product.nutrition" id="dietfacts_product"
+            model="product.template" name="product.nutrition"
+            report_type="qweb-pdf" string="Nutrition Products"/>
+        <template id="product.nutrition">
+            <t t-call="report.html_container">
+                <t t-as="o" t-foreach="docs">
+                    <t t-call="report.external_layout">
+                        <div class="page">
+                            <div class="oe_structure"/>
+                            <h1>Nutrition Reports</h1>
+                            <h2>Product name: <span t-field="o.name"/>
+                            </h2>
+                            <p>Calores: <span t-field="o.calories"/>
+                            </p>
+                            <p>Nutrition Score: <span t-field="o.nutrition_score"/>
+                            </p>
+                            <h3>Nutrition Details</h3>
+                            <t t-as="line" t-foreach="o.products_nutrients_id">
+                                <p>
+                                
+                                <div class = "row">
+                                    <div class="col-xs-6">
+                                        <span t-field="line.nutrients_id.name"/>
+                                    </div>
+                                    
+                                    <div class="col-xs-2">
+                                         <span t-field="line.value"/>
+                                    </div>
+                                   
+                                   <div class="col-xs-4">
+                                          <span t-field="line.nutrients_id.uom_id.name"/>
+                                    </div>
+                                </div>
+                                   
+                                </p>
+                            </t>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

@@ -29,6 +29,7 @@
         'views/templates.xml',
 	'views/dietfacts_view.xml',
     'security/ir.model.access.csv',
+    'reports/dietfacts_report.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
