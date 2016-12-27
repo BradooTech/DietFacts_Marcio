@@ -1,2 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_dietfacts_dietfacts,dietfacts.dietfacts,model_dietfacts_dietfacts,,1,0,0,0
+access_res_users_meal,access_res_users_meal,model_res_users_meal,,1,0,0,0
+access_res_users_mealitem,access_res_users_mealitem,model_res_users_mealitem,,1,0,0,0
+access_product_nutrients,access_product_nutrients,model_product_nutrients,,1,0,0,0
+access_product_template_nutrients,access_product_template_nutrients,model_product_template_nutrients,,1,0,0,0

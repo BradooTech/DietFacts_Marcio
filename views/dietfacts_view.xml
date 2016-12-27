@@ -10,6 +10,7 @@
                     <field name="serving_size"/>
                     <field name="last_updated"/>
                 </field>
+                
             </field>
         </record>
         <record id="dietfacts_product_template_only_form_view" model="ir.ui.view">
@@ -21,11 +22,26 @@
                     <field name="serving_size"/>
                     <field name="last_updated"/>
                 </field>
+                
+                
+                 <notebook>
+                    <page name="nutrients" string="Nutrients">
+                        <field name="products_nutrients_id" widget="one2many_list" attrs="{'invisible':[('categ_id', '!=', 7)]}">
+                            <tree string ="Menu Items" editable="bottom">
+                                <field name = "nutrients_id"/>
+                                <field name = "value"/>
+                                <field name = "uom"/>
+                                <field name = "dailypercent"/>
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
+                
             </field>
         </record>
         <!-- Action Diet Items -->
         <record id="action_views_dietfacts_sessions_new" model="ir.actions.act_window">
-            <field name="name">New Sessions</field>
+            <field name="name">Diet Products</field>
             <field name="res_model">product.template</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form,pivot</field>
@@ -55,6 +71,65 @@
                 </p>
             </field>
         </record>
+        
+        <!-- Action Nutrients -->
+        <record id="action_views_nutrients_sessions_new" model="ir.actions.act_window">
+            <field name="name">Nutrients</field>
+            <field name="res_model">product.nutrients</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,pivot</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to create Nutrients
+                </p>
+            </field>
+        </record>
+        
+         <record id="dietfacts_meal_form_view" model="ir.ui.view">
+            <field name="model">res.users.meal</field>
+            <field name="view_type">form</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="name"/>
+                        <field name="meal_date"/>
+                        <field name="user_id"/>
+                        <field name="totalcalories"/>
+                        <field name="notes"/>
+                    </group>
+                    
+                    <notebook>
+                    <page name="mealitems" string="Metal Items">
+                        <field name="item_ids" widget="one2many_list">
+                            <tree string ="Menu Items" editable="bottom">
+                                <field name = "item_id"/>
+                                <field name = "servings"/>
+                                <field name = "calories"/>
+                                <field name = "notes"/>
+                            </tree>
+                        </field>
+                    </page>
+                    </notebook>
+                </form>
+            </field>
+        </record>
+        
+        <record id="dietfacts_meal_tree_view" model="ir.ui.view">
+            <field name="name">meal.tree.view</field>
+            <field name="model">res.users.meal</field>
+            <field name="view_type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Meals">
+                    <field name="name"/>
+                    <field name="meal_date"/>
+                    <field name="user_id"/>
+                    <field name="notes"/>
+                    <field name="totalcalories"/>
+                    <field name="totalitems"/>
+                </tree>
+            </field>
+        </record>
+        
         <!-- Menu Diet Facts -->
         <menuitem id="menu_dietfacts_root" name="DietFacts"/>
         <menuitem id="menu_dietfacts_root_sessions" name="Diet Items" parent="menu_dietfacts_root"/>
@@ -62,6 +137,9 @@
             id="menu_action_views_dietfacts_sessions_new" parent="menu_dietfacts_root_sessions"/>
         <!-- Menu Meal Items -->
         <menuitem action="action_views_meal_items_sessions_new"
-            id="menu_meal_items_root_sessions" name="Meal Items" parent="menu_dietfacts_root"/>
+            id="menu_meal_items_root_sessions" name="Meals" parent="menu_dietfacts_root"/>
+             <!-- Menu Nutrients -->
+        <menuitem action="action_views_nutrients_sessions_new"
+            id="menu_nutrients_root_sessions" name="Nutrients" parent="menu_dietfacts_root"/>
     </data>
 </odoo>
