@@ -36,7 +36,7 @@ class Dietfacts_product_template(models.Model):
 				count -= 1
 			
 			
-		self.nutrition_score = currentscore / count
+		self.nutrition_score = currentscore #/ count
 		
 		
 class DietFacts_res_users_meal(models.Model):
