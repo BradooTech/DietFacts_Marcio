@@ -2,15 +2,62 @@
     <data>
         <report file="product.nutrition" id="dietfacts_product"
             model="product.template" name="product.nutrition"
-            report_type="qweb-pdf" string="Nutrition Products"/>
+            report_type="qweb-html" string="Nutrition Products"/>
         <template id="product.nutrition">
             <t t-call="report.html_container">
                 <t t-as="o" t-foreach="docs">
                     <t t-call="report.external_layout">
                         <div class="page">
                             <div class="oe_structure"/>
-                            <h1>Nutrition Reports</h1>
                             <h2>Product name: <span t-field="o.name"/>
+                                <h1>all</h1>
+                                <t t-esc="o_all"/>
+                                <br/>
+                                <h1>value</h1>
+                                <t t-esc="o_value"/>
+                                <br/>
+                                <h1>index</h1>
+                                <t t-esc="o_index"/>
+                                <br/>
+                                <h1>size</h1>
+                                <t t-esc="o_size"/>
+                                <br/>
+                                <h1>first</h1>
+                                <t t-esc="o_first"/>
+                                <br/>
+                                <h1>last</h1>
+                                <t t-esc="o_last"/>
+                                <br/>
+                                <h1>parity</h1>
+                                <t t-esc="o_parity"/>
+                                <br/>
+                                <h1>even</h1>
+                                <t t-esc="o_even"/>
+                                <br/>
+                                <h1>odd</h1>
+                                <t t-esc="o_odd"/>
+                                <br/>
+                                <h1>attributes</h1>
+                                <h1>t-att</h1>
+                                <div t-att-teste="42"/>
+                                <br/>
+                                <h1>t-attf</h1>
+                                <t t-as="item" t-foreach="[1, 2, 3]">
+                                    <li t-attf-class="row_{{ item_parity }}"><t t-esc="item"/></li>
+                                </t>
+                                <br/>
+                                <h1>t-att mapping</h1>
+                                <t t-att="{'a': 1, 'b': 2, 'c': 3}">
+                                <t t-esc="a"/>
+                                </t>
+                                
+                                <br/>
+                                <h1>t-att pair</h1>
+                                <div t-att="['a', 'b']"/>
+                                <t t-esc="a"/>
+                                
+                                
+                                  
                             </h2>
                             <p>Calores: <span t-field="o.calories"/>
                             </p>
@@ -19,21 +66,18 @@
                             <h3>Nutrition Details</h3>
                             <t t-as="line" t-foreach="o.products_nutrients_id">
                                 <p>
-                                
-                                <div class = "row">
+                                    <div class="row">
                                     <div class="col-xs-6">
-                                        <span t-field="line.nutrients_id.name"/>
+                                    <span t-esc="o_index"/>
+                                    <span t-field="line.nutrients_id.name"/>
                                     </div>
-                                    
                                     <div class="col-xs-2">
-                                         <span t-field="line.value"/>
+                                    <span t-field="line.value"/>
                                     </div>
-                                   
-                                   <div class="col-xs-4">
-                                          <span t-field="line.nutrients_id.uom_id.name"/>
+                                    <div class="col-xs-4">
+                                    <span t-field="line.nutrients_id.uom_id.name"/>
                                     </div>
-                                </div>
-                                   
+                                    </div>
                                 </p>
                             </t>
                         </div>

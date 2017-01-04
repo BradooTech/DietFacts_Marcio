@@ -1,0 +1,9 @@
+<odoo>
+  <data>
+    <template id="mystyle" name="My style" inherit_id="report.assets_common">
+      <xpath expr="link[last()]" position="after">
+        <link href="/dietfacts/static/src/css/style.css" rel="stylesheet" type="text/css"/>        
+      </xpath>
+    </template>
+  </data>
+</odoo>

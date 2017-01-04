@@ -1,0 +1,9 @@
+.row_even{
+    color: 'red';
+    size: 120px;    
+}
+
+.row_odd{
+    color: 'blue';
+    size: 50px;
+}
